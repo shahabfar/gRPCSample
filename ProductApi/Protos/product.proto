@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "ProductApi";
+
+service ProductDetails{
+	rpc GetProduct(ProductRequest) returns (ProductResponse);
+	rpc GetCategoryProducts(stream CatergoryRequest) returns (stream ProductResponse);
+}
+
+message ProductRequest{
+	int32 id = 1;
+}
+
+message CatergoryRequest{
+	int32 id = 1;
+}
+
+message ProductResponse{
+	int32 id = 1;
+	string name = 2;
+	string description = 3;
+	int32 categoryId = 4;
+}
